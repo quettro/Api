@@ -1,0 +1,46 @@
+/**
+ *
+ */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ *
+ */
+html,
+body {
+    @apply
+    h-[100%]
+    text-[14px]
+    text-slate-800
+    antialiased
+    relative;
+}
+
+/**
+ *
+ */
+.button {
+    @apply
+    py-[13px]
+    px-[21px]
+    text-center
+    text-slate-800
+    no-underline
+    outline-none
+    rounded-lg
+    border
+    border-transparent
+    bg-slate-100
+    hover:bg-slate-200
+    focus:bg-slate-300
+    focus:ring-4
+    focus:ring-slate-100/10
+    focus:ring-offset-0
+    [&.--primary]:bg-indigo-600
+    [&.--primary]:text-indigo-50
+    [&.--primary]:hover:bg-indigo-700
+    [&.--primary]:focus:bg-indigo-800
+    [&.--primary]:focus:ring-indigo-600/10;
+}

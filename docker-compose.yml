@@ -1,0 +1,32 @@
+version: '3.9'
+
+services:
+  db:
+    image: mysql:8.0
+    expose:
+      - "3307"
+    ports:
+      - "3307:3307"
+    volumes:
+      - ./Database/volume/:/var/lib/mysql/
+    env_file:
+      - ./Database/.env
+
+  web:
+    build:
+      context: ./App
+    volumes:
+      - ./App/:/var/www/html/
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:1.23
+    ports:
+      - "8080:80"
+    volumes:
+      - ./App/:/var/www/html/
+      - ./Nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./Nginx/conf.d/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - web
